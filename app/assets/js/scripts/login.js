@@ -1,6 +1,9 @@
 /**
  * Script for login.ejs
  */
+
+const MOJANG_OFFLINE_LOGIN = true
+
 // Validation Regexes.
 const validUsername         = /^[a-zA-Z0-9_]{1,16}$/
 const basicEmail            = /^\S+@\S+\.\S+$/
@@ -21,6 +24,10 @@ const loginForm             = document.getElementById('loginForm')
 // Control variables.
 let lu = false, lp = false
 
+if (MOJANG_OFFLINE_LOGIN) {
+    loginPassword.style.display = 'none'
+    validatePassword('password')
+}
 
 /**
  * Show a login error.
@@ -187,7 +194,8 @@ loginButton.addEventListener('click', () => {
     // Show loading stuff.
     loginLoading(true)
 
-    AuthManager.addMojangAccount(loginUsername.value, loginPassword.value).then((value) => {
+    const password = MOJANG_OFFLINE_LOGIN ? undefined : loginPassword.value
+    AuthManager.addMojangAccount(loginUsername.value, password).then((value) => {
         updateSelectedAccount(value)
         loginButton.innerHTML = loginButton.innerHTML.replace(Lang.queryJS('login.loggingIn'), Lang.queryJS('login.success'))
         $('.circle-loader').toggleClass('load-complete')
