@@ -31,10 +31,25 @@ const log = LoggerUtil.getLogger('AuthManager')
  */
 exports.addMojangAccount = async function(username, password) {
     try {
-        const response = await MojangRestAPI.authenticate(username, password, ConfigManager.getClientToken())
-        console.log(response)
-        if (response.responseStatus === RestResponseStatus.SUCCESS) {
+        let response
 
+        if (password !== undefined) {
+            response = await MojangRestAPI.authenticate(username, password, ConfigManager.getClientToken())
+            console.log(response)
+        } else {
+            response = {
+                responseStatus: RestResponseStatus.SUCCESS,
+                data: {
+                    selectedProfile: {
+                        id: '',
+                        name: username,
+                    },
+                    accessToken: 'offline-login',
+                },
+            }
+        }
+
+        if (response.responseStatus === RestResponseStatus.SUCCESS) {
             const session = response.data
             if (session.selectedProfile != null) {
                 const ret = ConfigManager.addMojangAuthAccount(session.selectedProfile.id, session.accessToken, username, session.selectedProfile.name)

@@ -461,7 +461,7 @@ function bindAuthAccountSelect() {
             for (let i = 0; i < selectBtns.length; i++) {
                 if (selectBtns[i].hasAttribute('selected')) {
                     selectBtns[i].removeAttribute('selected')
-                    selectBtns[i].innerHTML = 'Select Account'
+                    selectBtns[i].innerHTML = 'Wybierz konto'
                 }
             }
             val.setAttribute('selected', '')
@@ -570,7 +570,7 @@ ipcRenderer.on(MSFT_OPCODE.REPLY_LOGOUT, (_, ...arguments_) => {
         const isLastAccount = arguments_[2]
         const prevSelAcc = ConfigManager.getSelectedAccount()
 
-        msftLogoutLogger.info('Logout Successful. uuid:', uuid)
+        msftLogoutLogger.info('Wylogowanie powiodło się. uuid:', uuid)
 
         AuthManager.removeMicrosoftAccount(uuid)
             .then(() => {
@@ -611,12 +611,12 @@ function refreshAuthAccountSelected(uuid) {
         const selBtn = val.getElementsByClassName('settingsAuthAccountSelect')[0]
         if (uuid === val.getAttribute('uuid')) {
             selBtn.setAttribute('selected', '')
-            selBtn.innerHTML = 'Selected Account &#10004;'
+            selBtn.innerHTML = 'Wybrane konto &#10004;'
         } else {
             if (selBtn.hasAttribute('selected')) {
                 selBtn.removeAttribute('selected')
             }
-            selBtn.innerHTML = 'Select Account'
+            selBtn.innerHTML = 'Wybierz konto'
         }
     })
 }
@@ -657,9 +657,9 @@ function populateAuthAccounts() {
                     </div>
                 </div>
                 <div class="settingsAuthAccountActions">
-                    <button class="settingsAuthAccountSelect" ${selectedUUID === acc.uuid ? 'selected>Selected Account &#10004;' : '>Select Account'}</button>
+                    <button class="settingsAuthAccountSelect" ${selectedUUID === acc.uuid ? 'selected>Wybrane konto &#10004;' : '>Wybrane konto'}</button>
                     <div class="settingsAuthAccountWrapper">
-                        <button class="settingsAuthAccountLogOut">Log Out</button>
+                        <button class="settingsAuthAccountLogOut">Wyloguj</button>
                     </div>
                 </div>
             </div>
@@ -873,7 +873,7 @@ function resolveDropinModsForUI(){
                             <div class="settingsModDetails">
                                 <span class="settingsModName">${dropin.name}</span>
                                 <div class="settingsDropinRemoveWrapper">
-                                    <button class="settingsDropinRemoveButton" remmod="${dropin.fullName}">Remove</button>
+                                    <button class="settingsDropinRemoveButton" remmod="${dropin.fullName}">Usuń</button>
                                 </div>
                             </div>
                         </div>
@@ -1093,7 +1093,7 @@ function loadSelectedServerOnModsTab(){
                             <path class="cls-1" d="M100.93,65.54C89,62,68.18,55.65,63.54,52.13c2.7-5.23,18.8-19.2,28-27.55C81.36,31.74,63.74,43.87,58.09,45.3c-2.41-5.37-3.61-26.52-4.37-39-.77,12.46-2,33.64-4.36,39-5.7-1.46-23.3-13.57-33.49-20.72,9.26,8.37,25.39,22.36,28,27.55C39.21,55.68,18.47,62,6.52,65.55c12.32-2,33.63-6.06,39.34-4.9-.16,5.87-8.41,26.16-13.11,37.69,6.1-10.89,16.52-30.16,21-33.9,4.5,3.79,14.93,23.09,21,34C70,86.84,61.73,66.48,61.59,60.65,67.36,59.49,88.64,63.52,100.93,65.54Z"/>
                             <circle class="cls-2" cx="53.73" cy="53.9" r="38"/>
                         </svg>
-                        <span class="serverListingStarTooltip">Main Server</span>
+                        <span class="serverListingStarTooltip">Główny serwer</span>
                     </div>` : ''}
                 </div>
             </div>
@@ -1367,9 +1367,9 @@ function populateJavaExecDetails(execPath){
 function populateJavaReqDesc() {
     const mcVer = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer()).getMinecraftVersion()
     if(Util.mcVersionAtLeast('1.17', mcVer)) {
-        settingsJavaReqDesc.innerHTML = 'Requires Java 17 x64.'
+        settingsJavaReqDesc.innerHTML = 'Wymaga Java 17 x64.'
     } else {
-        settingsJavaReqDesc.innerHTML = 'Requires Java 8 x64.'
+        settingsJavaReqDesc.innerHTML = 'Wymaga Java 8 x64.'
     }
 }
 
@@ -1534,16 +1534,16 @@ function populateSettingsUpdateInformation(data){
                 shell.openExternal(data.darwindownload)
             })
         } else {
-            settingsUpdateButtonStatus('Downloading..', true)
+            settingsUpdateButtonStatus('Pobieranie..', true)
         }
     } else {
-        settingsUpdateTitle.innerHTML = 'You Are Running the Latest Version'
+        settingsUpdateTitle.innerHTML = 'Używasz najnowszej wersji'
         settingsUpdateChangelogCont.style.display = 'none'
         populateVersionInformation(remote.app.getVersion(), settingsUpdateVersionValue, settingsUpdateVersionTitle, settingsUpdateVersionCheck)
-        settingsUpdateButtonStatus('Check for Updates', false, () => {
+        settingsUpdateButtonStatus('Sprawdź aktualizacje', false, () => {
             if(!isDev){
                 ipcRenderer.send('autoUpdateAction', 'checkForUpdate')
-                settingsUpdateButtonStatus('Checking for Updates..', true)
+                settingsUpdateButtonStatus('Sprawdzanie aktualizacji..', true)
             }
         })
     }
