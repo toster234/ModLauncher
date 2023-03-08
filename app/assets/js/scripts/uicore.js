@@ -55,8 +55,8 @@ if (!isDev) {
                 populateSettingsUpdateInformation(info)
                 break
             case 'update-downloaded':
-                loggerAutoUpdater.info('Update ' + info.version + ' ready to be installed.')
-                settingsUpdateButtonStatus('Install Now', false, () => {
+                loggerAutoUpdater.info('Aktualizacja ' + info.version + ' jest gotowa do zainstalowania.')
+                settingsUpdateButtonStatus('Zainstaluj teraz', false, () => {
                     if (!isDev) {
                         ipcRenderer.send('autoUpdateAction', 'installUpdateNow')
                     }
@@ -65,7 +65,7 @@ if (!isDev) {
                 break
             case 'update-not-available':
                 loggerAutoUpdater.info('No new update found.')
-                settingsUpdateButtonStatus('Check for Updates')
+                settingsUpdateButtonStatus('Sprawdź aktualizacje')
                 break
             case 'ready':
                 updateCheckListener = setInterval(() => {
