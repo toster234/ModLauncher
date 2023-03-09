@@ -866,7 +866,7 @@ let newsLoadingListener = null
  */
 function setNewsLoading(val){
     if(val){
-        const nLStr = 'Checking for News'
+        const nLStr = 'Sprawdzanie aktualności'
         let dotStr = '..'
         nELoadSpan.innerHTML = nLStr + dotStr
         newsLoadingListener = setInterval(() => {
@@ -1121,7 +1121,7 @@ function loadNews(){
 
                     let link   = el.find('link').text()
                     let title  = el.find('title').text()
-                    let author = el.find('dc\\:creator').text()
+                    let author = el.find('author').text()
 
                     // Generate article.
                     articles.push(
