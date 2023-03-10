@@ -1,9 +1,9 @@
 {
     "name": "tosthostlauncher",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "productName": "TostHost Launcher",
     "description": "Modded Minecraft Launcher",
-    "author": "Daniel Scalzi, Oliwier Thomas",
+    "author": "Daniel Scalzi, toster.dev",
     "license": "UNLICENSED",
     "homepage": "https://github.com/toster234/ModLauncher",
     "bugs": {
