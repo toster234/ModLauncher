@@ -232,7 +232,7 @@ const refreshServerStatus = async function(fade = false){
 
         const servStat = await getServerStatus(47, serverURL.hostname, Number(serverURL.port))
         console.log(servStat)
-        pLabel = 'PLAYERS'
+        pLabel = 'GRACZE'
         pVal = servStat.players.online + '/' + servStat.players.max
 
     } catch (err) {
@@ -614,12 +614,12 @@ function dlAsync(login = true){
                     if(m.error.code === 'ENOENT'){
                         showLaunchFailure(
                             'Download Error',
-                            'Could not connect to the file server. Ensure that you are connected to the internet and try again.'
+                            'Nie można połączyć się z serwerem plików. Upewnij się, że jesteś podłączony do Internetu i spróbuj ponownie.'
                         )
                     } else {
                         showLaunchFailure(
                             'Download Error',
-                            'Check the console (CTRL + Shift + i) for more details. Please try again.'
+                            'Sprawdź konsolę (CTRL + Shift + i) aby uzyskać więcej szczegółów. Proszę spróbować ponownie.'
                         )
                     }
 
@@ -707,7 +707,7 @@ function dlAsync(login = true){
                     proc.stdout.on('data', tempListener)
                     proc.stderr.on('data', gameErrorListener)
 
-                    setLaunchDetails('Wykonano. Miłego korzystania z serwera!')
+                    setLaunchDetails('Wykonano. Miłego grania!')
 
                     // Init Discord Hook
                     const distro = DistroManager.getDistribution()

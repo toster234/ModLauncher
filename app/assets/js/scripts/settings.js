@@ -465,7 +465,7 @@ function bindAuthAccountSelect() {
                 }
             }
             val.setAttribute('selected', '')
-            val.innerHTML = 'Selected Account &#10004;'
+            val.innerHTML = 'Wybrane konto &#10004;'
             setSelectedAccount(val.closest('.settingsAuthAccount').getAttribute('uuid'))
         }
     })
@@ -483,10 +483,10 @@ function bindAuthAccountLogOut() {
             if (Object.keys(ConfigManager.getAuthAccounts()).length === 1) {
                 isLastAccount = true
                 setOverlayContent(
-                    'Warning<br>This is Your Last Account',
-                    'In order to use the launcher you must be logged into at least one account. You will need to login again after.<br><br>Are you sure you want to log out?',
-                    'I\'m Sure',
-                    'Cancel'
+                    'Ostrzeżenie<br>To twoje ostatnie konto',
+                    'Aby korzystać z launchera musisz być zalogowany na co najmniej jedno konto. Po zakończeniu będziesz musiał się ponownie zalogować.<br><br>Czy na pewno chcesz się wylogować?',
+                    'Tak',
+                    'Anuluj'
                 )
                 setOverlayHandler(() => {
                     processLogOut(val, isLastAccount)

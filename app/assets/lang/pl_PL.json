@@ -1,0 +1,49 @@
+{
+    "html": {
+        "avatarOverlay": "Edytuj"
+    },
+    "js": {
+        "login": {
+            "error": {
+                "invalidValue": "* Nieprawidłowa wartość",
+                "requiredValue": "* Wymagane",
+                "userMigrated": {
+                    "title": "Problem podczas logowania:<br>Nieprawidłowe dane uwierzytelniające",
+                    "desc": "Próbowałeś się zalogować przy użyciu zmigrowanego konta. Spróbuj ponownie używając maila z konta jako nazwy użytkownika."
+                },
+                "invalidCredentials": {
+                    "title": "Problem podczas logowania:<br>Nieprawidłowe dane uwierzytelniające",
+                    "desc": "Wprowadzony e-mail lub hasło są nieprawidłowe. Proszę spróbować ponownie."
+                },
+                "rateLimit": {
+                    "title": "Błąd podczas logowania:<br>Zbyt wiele prób",
+                    "desc": "Ostatnio było zbyt wiele prób logowania na to konto. Proszę spróbować ponownie później."
+                },
+                "noInternet": {
+                    "title": "Błąd podczas logowania:<br>Brak połączenia z Internetem",
+                    "desc": "Musisz być podłączony do Internetu, aby się zalogować. Proszę połączyć się i spróbować ponownie."
+                },
+                "authDown": {
+                    "title": "Błąd podczas logowania:<br>Authentication Server Offline",
+                    "desc": "Serwer uwierzytelniania Mojang jest obecnie offline lub nieosiągalny. Proszę poczekać trochę i spróbować ponownie. Możesz sprawdzić status serwera na stronie <a href=\"https://help.mojang.com/\">Mojang portal pomocy</a>."
+                },
+                "notPaid": {
+                    "title": "Błąd podczas logowania:<br>Gra nie została zakupiona",
+                    "desc": "Konto, za pomocą którego próbujesz się zalogować, nie zakupiło kopii Minecrafta.<br>Można zakupić egzemplarz na stronie <a href=\"https://minecraft.net/\">Minecraft.net</a>"
+                },
+                "unknown": {
+                    "title": "Błąd podczas logowania:<br>Nieznany błąd"
+                }
+            },
+            "login": "ZALOGUJ",
+            "loggingIn": "LOGOWANIE",
+            "success": "pl",
+            "tryAgain": "Spróbuj ponownie"
+        },
+        "landing": {
+            "launch": {
+                "pleaseWait": "Proszę czekać.."
+            }
+        }
+    }
+}

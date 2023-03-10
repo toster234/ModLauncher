@@ -1717,73 +1717,86 @@ class AssetGuard extends EventEmitter {
         const dlTracker = this[identifier]
         const dlQueue = dlTracker.dlqueue
 
+        const downloadFile = function (asset, cb, retryCount = 0) {
+            fs.ensureDirSync(path.join(asset.to, '..'))
+
+            let req = request(asset.from, {
+                timeout: 10000,
+            })
+            req.pause()
+
+            req.on('response', (resp) => {
+
+                if(resp.statusCode === 200){
+
+                    let doHashCheck = false
+                    const contentLength = parseInt(resp.headers['content-length'])
+
+                    if(contentLength !== asset.size){
+                        AssetGuard.logger.warn(`WARN: Got ${contentLength} bytes for ${asset.id}: Expected ${asset.size}`)
+                        doHashCheck = true
+
+                        // Adjust download
+                        this.totaldlsize -= asset.size
+                        this.totaldlsize += contentLength
+                    }
+
+                    let writeStream = fs.createWriteStream(asset.to)
+                    writeStream.on('close', () => {
+                        if(dlTracker.callback != null){
+                            dlTracker.callback.apply(dlTracker, [asset, self])
+                        }
+
+                        if(doHashCheck){
+                            const v = AssetGuard._validateLocal(asset.to, asset.type != null ? 'md5' : 'sha1', asset.hash)
+                            if(v){
+                                AssetGuard.logger.warn(`Hashes match for ${asset.id}, byte mismatch is an issue in the distro index.`)
+                            } else {
+                                AssetGuard.logger.error(`Hashes do not match, ${asset.id} may be corrupted.`)
+                            }
+                        }
+
+                        cb()
+                    })
+                    req.pipe(writeStream)
+                    req.resume()
+
+                } else {
+
+                    req.abort()
+                    AssetGuard.logger.error(`Failed to download ${asset.id}(${typeof asset.from === 'object' ? asset.from.url : asset.from}). Response code ${resp.statusCode}`)
+                    self.progress += asset.size*1
+                    self.emit('progress', 'download', self.progress, self.totaldlsize)
+                    cb()
+
+                }
+
+            })
+
+            req.on('error', (err) => {
+                AssetGuard.logger.warn(`[WRUCZEK] [${identifier}] FAILED ASSET: ` + JSON.stringify(asset))
+
+                // too many failures, error out
+                if (retryCount++ >= 10) {
+                    self.emit('error', 'download', err)
+                } else {
+                    // retry
+                    AssetGuard.logger.warn(`[WRUCZEK] [${identifier}] Retrying download ${retryCount}...`)
+                    downloadFile(asset, cb, retryCount)
+                }
+            })
+
+            req.on('data', (chunk) => {
+                self.progress += chunk.length
+                self.emit('progress', 'download', self.progress, self.totaldlsize)
+            })
+        }
+
         if(dlQueue.length > 0){
             AssetGuard.logger.info('DLQueue', dlQueue)
 
             async.eachLimit(dlQueue, limit, (asset, cb) => {
-
-                fs.ensureDirSync(path.join(asset.to, '..'))
-
-                let req = request(asset.from)
-                req.pause()
-
-                req.on('response', (resp) => {
-
-                    if(resp.statusCode === 200){
-
-                        let doHashCheck = false
-                        const contentLength = parseInt(resp.headers['content-length'])
-
-                        if(contentLength !== asset.size){
-                            AssetGuard.logger.warn(`WARN: Got ${contentLength} bytes for ${asset.id}: Expected ${asset.size}`)
-                            doHashCheck = true
-
-                            // Adjust download
-                            this.totaldlsize -= asset.size
-                            this.totaldlsize += contentLength
-                        }
-
-                        let writeStream = fs.createWriteStream(asset.to)
-                        writeStream.on('close', () => {
-                            if(dlTracker.callback != null){
-                                dlTracker.callback.apply(dlTracker, [asset, self])
-                            }
-
-                            if(doHashCheck){
-                                const v = AssetGuard._validateLocal(asset.to, asset.type != null ? 'md5' : 'sha1', asset.hash)
-                                if(v){
-                                    AssetGuard.logger.warn(`Hashes match for ${asset.id}, byte mismatch is an issue in the distro index.`)
-                                } else {
-                                    AssetGuard.logger.error(`Hashes do not match, ${asset.id} may be corrupted.`)
-                                }
-                            }
-
-                            cb()
-                        })
-                        req.pipe(writeStream)
-                        req.resume()
-
-                    } else {
-
-                        req.abort()
-                        AssetGuard.logger.error(`Failed to download ${asset.id}(${typeof asset.from === 'object' ? asset.from.url : asset.from}). Response code ${resp.statusCode}`)
-                        self.progress += asset.size*1
-                        self.emit('progress', 'download', self.progress, self.totaldlsize)
-                        cb()
-
-                    }
-
-                })
-
-                req.on('error', (err) => {
-                    self.emit('error', 'download', err)
-                })
-
-                req.on('data', (chunk) => {
-                    self.progress += chunk.length
-                    self.emit('progress', 'download', self.progress, self.totaldlsize)
-                })
-
+                downloadFile(asset, cb, 0)
             }, (err) => {
 
                 if(err){
@@ -1849,9 +1862,9 @@ class AssetGuard extends EventEmitter {
                 if(r) shouldFire = false
             }
 
-            if(shouldFire){
-                this.emit('complete', 'download')
-            }
+                if(shouldFire){
+                    this.emit('complete', 'download')
+                }
         })
     }
 
