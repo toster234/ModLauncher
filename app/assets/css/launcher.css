@@ -2858,7 +2858,7 @@ input:checked + .toggleSwitchSlider:before {
     height: 70px;
     width: auto;
     position: relative;
-    border: 2px solid white;
+    border: 2px solid #2861f2;
     box-sizing: border-box;
     border-radius: 50%;
 }

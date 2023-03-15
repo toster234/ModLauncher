@@ -460,7 +460,7 @@ function asyncSystemScan(mcVersion, launchAfter = true){
     })
 
     // Begin system Java scan.
-    setLaunchDetails('Checking system info..')
+    setLaunchDetails('Sprawdzanie informacji o systemie..')
     sysAEx.send({task: 'execute', function: 'validateJava', argsArr: [ConfigManager.getDataDirectory()]})
 
 }
@@ -489,7 +489,7 @@ function dlAsync(login = true){
 
     if(login) {
         if(ConfigManager.getSelectedAccount() == null){
-            loggerLanding.error('You must be logged into an account.')
+            loggerLanding.error('Musisz być zalogowany na konto.')
             return
         }
     }
@@ -541,22 +541,22 @@ function dlAsync(login = true){
                 case 'distribution':
                     setLaunchPercentage(20, 100)
                     loggerLaunchSuite.info('Validated distibution index.')
-                    setLaunchDetails('Loading version information..')
+                    setLaunchDetails('Pobieranie informacji o wersji..')
                     break
                 case 'version':
                     setLaunchPercentage(40, 100)
                     loggerLaunchSuite.info('Version data loaded.')
-                    setLaunchDetails('Validating asset integrity..')
+                    setLaunchDetails('Walidacja integralności zasobów..')
                     break
                 case 'assets':
                     setLaunchPercentage(60, 100)
                     loggerLaunchSuite.info('Asset Validation Complete')
-                    setLaunchDetails('Validating library integrity..')
+                    setLaunchDetails('Walidacja integralności biblioteki..')
                     break
                 case 'libraries':
                     setLaunchPercentage(80, 100)
                     loggerLaunchSuite.info('Library validation complete.')
-                    setLaunchDetails('Validating miscellaneous file integrity..')
+                    setLaunchDetails('Walidacja integralności różnych plików..')
                     break
                 case 'files':
                     setLaunchPercentage(100, 100)
@@ -579,7 +579,7 @@ function dlAsync(login = true){
                     remote.getCurrentWindow().setProgressBar(2)
 
                     // Download done, extracting.
-                    const eLStr = 'Extracting libraries'
+                    const eLStr = 'Ekstrakcja bibliotek'
                     let dotStr = ''
                     setLaunchDetails(eLStr)
                     progressListener = setInterval(() => {
@@ -603,7 +603,7 @@ function dlAsync(login = true){
                         progressListener = null
                     }
 
-                    setLaunchDetails('Preparing to launch..')
+                    setLaunchDetails('Przygotowanie do startu..')
                     break
             }
         } else if(m.context === 'error'){
@@ -613,12 +613,12 @@ function dlAsync(login = true){
                     
                     if(m.error.code === 'ENOENT'){
                         showLaunchFailure(
-                            'Download Error',
+                            'Błąd pobierania',
                             'Nie można połączyć się z serwerem plików. Upewnij się, że jesteś podłączony do Internetu i spróbuj ponownie.'
                         )
                     } else {
                         showLaunchFailure(
-                            'Download Error',
+                            'Błąd pobierania',
                             'Sprawdź konsolę (CTRL + Shift + i) aby uzyskać więcej szczegółów. Proszę spróbować ponownie.'
                         )
                     }
@@ -1072,8 +1072,8 @@ function displayArticle(articleObject, index){
     newsArticleTitle.href = articleObject.link
     newsArticleAuthor.innerHTML = 'by ' + articleObject.author
     newsArticleDate.innerHTML = articleObject.date
-    newsArticleComments.innerHTML = articleObject.comments
-    newsArticleComments.href = articleObject.commentsLink
+    //newsArticleComments.innerHTML = articleObject.comments
+    //newsArticleComments.href = articleObject.commentsLink
     newsArticleContentScrollable.innerHTML = '<div id="newsArticleContentWrapper"><div class="newsArticleSpacerTop"></div>' + articleObject.content + '<div class="newsArticleSpacerBot"></div></div>'
     Array.from(newsArticleContentScrollable.getElementsByClassName('bbCodeSpoilerButton')).forEach(v => {
         v.onclick = () => {
@@ -1107,9 +1107,10 @@ function loadNews(){
                     // Resolve date.
                     const date = new Date(el.find('pubDate').text()).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
 
-                    // Resolve comments.
+                    /*// Resolve comments.
                     let comments = el.find('slash\\:comments').text() || '0'
                     comments = comments + ' Comment' + (comments === '1' ? '' : 's')
+                    */
 
                     // Fix relative links in content.
                     let content = el.find('content\\:encoded').text()
@@ -1131,8 +1132,8 @@ function loadNews(){
                             date,
                             author,
                             content,
-                            comments,
-                            commentsLink: link + '#comments'
+                            //comments,
+                            //commentsLink: link + '#comments'
                         }
                     )
                 }

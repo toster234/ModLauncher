@@ -901,8 +901,8 @@ function bindDropinModsRemoveButton(){
                 document.getElementById(fullName).remove()
             } else {
                 setOverlayContent(
-                    `Failed to Delete<br>Drop-in Mod ${fullName}`,
-                    'Make sure the file is not in use and try again.',
+                    `Nie udało się usunąć<br>Drop-in Mod ${fullName}`,
+                    'Upewnij się, że plik nie jest w użyciu i spróbuj ponownie.',
                     'Okay'
                 )
                 setOverlayHandler(null)
@@ -1354,9 +1354,9 @@ function populateJavaExecDetails(execPath){
         if(v.valid){
             const vendor = v.vendor != null ? ` (${v.vendor})` : ''
             if(v.version.major < 9) {
-                settingsJavaExecDetails.innerHTML = `Selected: Java ${v.version.major} Update ${v.version.update} (x${v.arch})${vendor}`
+                settingsJavaExecDetails.innerHTML = `Wybrana: Java ${v.version.major} Update ${v.version.update} (x${v.arch})${vendor}`
             } else {
-                settingsJavaExecDetails.innerHTML = `Selected: Java ${v.version.major}.${v.version.minor}.${v.version.revision} (x${v.arch})${vendor}`
+                settingsJavaExecDetails.innerHTML = `Wybrana: Java ${v.version.major}.${v.version.minor}.${v.version.revision} (x${v.arch})${vendor}`
             }
         } else {
             settingsJavaExecDetails.innerHTML = 'Invalid Selection'
@@ -1376,10 +1376,10 @@ function populateJavaReqDesc() {
 function populateJvmOptsLink() {
     const mcVer = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer()).getMinecraftVersion()
     if(Util.mcVersionAtLeast('1.17', mcVer)) {
-        settingsJvmOptsLink.innerHTML = 'Available Options for Java 17 (HotSpot VM)'
+        settingsJvmOptsLink.innerHTML = 'Dostępne opcje dla Java 17 (HotSpot VM)'
         settingsJvmOptsLink.href = 'https://docs.oracle.com/en/java/javase/17/docs/specs/man/java.html#extra-options-for-java'
     } else {
-        settingsJvmOptsLink.innerHTML = 'Available Options for Java 8 (HotSpot VM)'
+        settingsJvmOptsLink.innerHTML = 'Dostępne opcje dla Java 8 (HotSpot VM)'
         settingsJvmOptsLink.href = `https://docs.oracle.com/javase/8/docs/technotes/tools/${process.platform === 'win32' ? 'windows' : 'unix'}/java.html`
     }
 }

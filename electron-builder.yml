@@ -2,7 +2,7 @@ appId: 'tostlauncher'
 productName: 'TostHost Launcher'
 artifactName: '${productName}-setup-${version}.${ext}'
 
-copyright: 'Copyright © 2018-2023 Daniel Scalzi, Oliwier Thomas'
+copyright: 'Copyright © 2018-2023 Daniel Scalzi, toster.dev'
 
 asar: true
 compression: 'maximum'
