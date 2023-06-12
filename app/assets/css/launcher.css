@@ -2945,6 +2945,37 @@ input:checked + .toggleSwitchSlider:before {
     }
 }
 
+/* Update available animation for the alert. */
+@keyframes glow-grow-alert {
+    0% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Update available animation for the alert. */
+@keyframes update-alert {
+    0% {
+        transform: scale(1);
+        background-color: rgba(255, 152, 0, 0.65);
+    }
+    75% {
+        transform: scale(1.05);
+        background-color: rgba(255, 152, 0, 0.9);
+    }
+    100% {
+        transform: scale(1);
+        background-color: rgba(255, 152, 0, 0.65);
+    }
+}
+
 /* * *
 * Landing View (Bottom Styles) | Right Content
 * * */
@@ -3965,4 +3996,31 @@ input:checked + .toggleSwitchSlider:before {
 /* Class which is applied when the spinner image is spinning. */
 .rotating {
     animation: rotating 10s linear infinite;
+}
+
+/* Testing new update info */
+#update-alert {
+    padding: 15px;
+    position: relative;
+    align-self: flex-start;
+    background-color: #ff9800;
+    color: white;
+    transition: opacity 0.6s;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    border-radius: 0.5rem;
+    text-shadow: 0px 0px 0px #bebcbb;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    animation: update-alert 3s ease-out infinite;
+    cursor: pointer;
+}
+
+#update-alert > div {
+    font-size: 75%;
+    text-align: center;
+    font-weight: normal;
+    margin-top: 0.1rem;
 }
