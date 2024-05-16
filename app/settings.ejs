@@ -2,21 +2,21 @@
     <div id="settingsContainerLeft">
         <div id="settingsNavContainer">
             <div id="settingsNavHeader">
-                <span id="settingsNavHeaderText">Ustawienia</span>
+                <span id="settingsNavHeaderText"><%- lang('settings.navHeaderText') %></span>
             </div>
             <div id="settingsNavItemsContainer">
                 <div id="settingsNavItemsContent">
-                    <button class="settingsNavItem" rSc="settingsTabAccount" id="settingsNavAccount" selected>Konto</button>
-                    <button class="settingsNavItem" rSc="settingsTabMinecraft">Minecraft</button>
-                    <button class="settingsNavItem" rSc="settingsTabMods">Mody</button>
-                    <button class="settingsNavItem" rSc="settingsTabJava">Java</button>
-                    <button class="settingsNavItem" rSc="settingsTabLauncher">Launcher</button>
+                    <button class="settingsNavItem" rSc="settingsTabAccount" id="settingsNavAccount" selected><%- lang('settings.navAccount') %></button>
+                    <button class="settingsNavItem" rSc="settingsTabMinecraft"><%- lang('settings.navMinecraft') %></button>
+                    <button class="settingsNavItem" rSc="settingsTabMods"><%- lang('settings.navMods') %></button>
+                    <button class="settingsNavItem" rSc="settingsTabJava"><%- lang('settings.navJava') %></button>
+                    <button class="settingsNavItem" rSc="settingsTabLauncher"><%- lang('settings.navLauncher') %></button>
                     <div class="settingsNavSpacer"></div>
-                    <button class="settingsNavItem" rSc="settingsTabAbout">O launcherze</button>
-                    <button class="settingsNavItem" rSc="settingsTabUpdate" id="settingsNavUpdate">Aktualizacje</button>
+                    <button class="settingsNavItem" rSc="settingsTabAbout"><%- lang('settings.navAbout') %></button>
+                    <button class="settingsNavItem" rSc="settingsTabUpdate" id="settingsNavUpdate"><%- lang('settings.navUpdates') %></button>
                     <div id="settingsNavContentBottom">
                         <div class="settingsNavDivider"></div>
-                        <button id="settingsNavDone">Gotowe</button>
+                        <button id="settingsNavDone"><%- lang('settings.navDone') %></button>
                     </div>
                 </div>
             </div>
@@ -25,8 +25,8 @@
     <div id="settingsContainerRight">
         <div id="settingsTabAccount" class="settingsTab">
             <div class="settingsTabHeader">
-                <span class="settingsTabHeaderText">Ustawienia konta</span>
-                <span class="settingsTabHeaderDesc">Dodaj nowe konta lub zarządzaj istniejącymi.</span>
+                <span class="settingsTabHeaderText"><%- lang('settings.tabAccountHeaderText') %></span>
+                <span class="settingsTabHeaderDesc"><%- lang('settings.tabAccountHeaderDesc') %></span>
             </div>
             <div class="settingsAuthAccountTypeContainer">
                 <div class="settingsAuthAccountTypeHeader">
@@ -37,10 +37,10 @@
                             <path fill="#05a6f0" d="M1 12h10v10H1z" />
                             <path fill="#ffba08" d="M12 12h10v10H12z" />
                         </svg>
-                        <span>Microsoft</span>
+                        <span><%- lang('settings.microsoftAccount') %></span>
                     </div>
                     <div class="settingsAuthAccountTypeHeaderRight">
-                        <button class="settingsAddAuthAccount" id="settingsAddMicrosoftAccount">+ Dodaj konto Microsoft</button>
+                        <button class="settingsAddAuthAccount" id="settingsAddMicrosoftAccount"><%- lang('settings.addMicrosoftAccount') %></button>
                     </div>
                 </div>
 
@@ -57,10 +57,10 @@
                             <path d="M2.598.022h7.07L9.665 7c-.003 1.334-1.113 2.46-2.402 2.654H0V2.542C.134 1.2 1.3.195 2.598.022z" fill="#db2331" />
                             <path d="M1.54 2.844c.314-.76 1.31-.46 1.954-.528.785-.083 1.503.272 2.1.758l.164-.9c.327.345.587.756.964 1.052.28.254.655-.342.86-.013.42.864.408 1.86.54 2.795l-.788-.373C6.9 4.17 5.126 3.052 3.656 3.685c-1.294.592-1.156 2.65.06 3.255 1.354.703 2.953.51 4.405.292-.07.42-.34.87-.834.816l-4.95.002c-.5.055-.886-.413-.838-.89l.04-4.315z" fill="#fff" />
                         </svg>
-                        <span>Mojang</span>
+                        <span><%- lang('settings.mojangAccount') %></span>
                     </div>
                     <div class="settingsAuthAccountTypeHeaderRight">
-                        <button class="settingsAddAuthAccount" id="settingsAddMojangAccount">+ Dodaj konto Mojang</button>
+                        <button class="settingsAddAuthAccount" id="settingsAddMojangAccount"><%- lang('settings.addMojangAccount') %></button>
                     </div>
                 </div>
 
@@ -71,11 +71,11 @@
         </div>
         <div id="settingsTabMinecraft" class="settingsTab" style="display: none;">
             <div class="settingsTabHeader">
-                <span class="settingsTabHeaderText">Ustawienia Minecraft</span>
-                <span class="settingsTabHeaderDesc">Opcje związane z uruchomieniem gry.</span>
+                <span class="settingsTabHeaderText"><%- lang('settings.minecraftTabHeaderText') %></span>
+                <span class="settingsTabHeaderDesc"><%- lang('settings.minecraftTabHeaderDesc') %></span>
             </div>
             <div id="settingsGameResolutionContainer">
-                <span class="settingsFieldTitle">Rozdzielczość gry</span>
+                <span class="settingsFieldTitle"><%- lang('settings.gameResolutionTitle') %></span>
                 <div id="settingsGameResolutionContent">
                     <input type="number" id="settingsGameWidth" min="0" cValue="GameWidth">
                     <div id="settingsGameResolutionCross">&#10006;</div>
@@ -84,7 +84,7 @@
             </div>
             <div class="settingsFieldContainer">
                 <div class="settingsFieldLeft">
-                    <span class="settingsFieldTitle">Uruchom w trybie pełnoekranowym.</span>
+                    <span class="settingsFieldTitle"><%- lang('settings.launchFullscreenTitle') %></span>
                 </div>
                 <div class="settingsFieldRight">
                     <label class="toggleSwitch">
@@ -95,7 +95,7 @@
             </div>
             <div class="settingsFieldContainer">
                 <div class="settingsFieldLeft">
-                    <span class="settingsFieldTitle">Automatyczne połączenie z serwerem przy uruchomieniu.</span>
+                    <span class="settingsFieldTitle"><%- lang('settings.autoConnectTitle') %></span>
                 </div>
                 <div class="settingsFieldRight">
                     <label class="toggleSwitch">
@@ -106,8 +106,8 @@
             </div>
             <div class="settingsFieldContainer">
                 <div class="settingsFieldLeft">
-                    <span class="settingsFieldTitle">Uruchom proces gry jako niezależny od launchera.</span>
-                    <span class="settingsFieldDesc">Jeśli gra nie jest odłączona, zamknięcie launchera spowoduje również zamknięcie gry.</span>
+                    <span class="settingsFieldTitle"><%- lang('settings.launchDetachedTitle') %></span>
+                    <span class="settingsFieldDesc"><%- lang('settings.launchDetachedDesc') %></span>
                 </div>
                 <div class="settingsFieldRight">
                     <label class="toggleSwitch">
@@ -119,8 +119,8 @@
         </div>
         <div id="settingsTabMods" class="settingsTab" style="display: none;">
             <div class="settingsTabHeader">
-                <span class="settingsTabHeaderText">Ustawienia modów</span>
-                <span class="settingsTabHeaderDesc">Włączenie lub wyłączenie modów.</span>
+                <span class="settingsTabHeaderText"><%- lang('settings.tabModsHeaderText') %></span>
+                <span class="settingsTabHeaderDesc"><%- lang('settings.tabModsHeaderDesc') %></span>
             </div>
             <div class="settingsSelServContainer">
                 <div class="settingsSelServContent">
@@ -128,37 +128,37 @@
                 </div>
                 <div class="settingsSwitchServerContainer">
                     <div class="settingsSwitchServerContent">
-                        <button class="settingsSwitchServerButton">Wybierz</button>
+                        <button class="settingsSwitchServerButton"><%- lang('settings.switchServerButton') %></button>
                     </div>
                 </div>
             </div>
             <div id="settingsModsContainer">
                 <div id="settingsReqModsContainer">
-                    <div class="settingsModsHeader">Wymagane mody</div>
+                    <div class="settingsModsHeader"><%- lang('settings.requiredMods') %></div>
                     <div id="settingsReqModsContent">
 
                     </div>
                 </div>
                 <div id="settingsOptModsContainer">
-                    <div class="settingsModsHeader">Mody opcjonalne</div>
+                    <div class="settingsModsHeader"><%- lang('settings.optionalMods') %></div>
                     <div id="settingsOptModsContent">
 
                     </div>
                 </div>
                 <div id="settingsDropinModsContainer">
-                    <div class="settingsModsHeader">Przerzuć mody</div>
-                    <button id="settingsDropinFileSystemButton">+ Dodaj mody <span id="settingsDropinRefreshNote">(F5 by odświeżyć)</span></button>
+                    <div class="settingsModsHeader"><%- lang('settings.dropinMods') %></div>
+                    <button id="settingsDropinFileSystemButton"><%- lang('settings.addMods') %> <span id="settingsDropinRefreshNote"><%- lang('settings.dropinRefreshNote') %></span></button>
                     <div id="settingsDropinModsContent">
 
                     </div>
                 </div>
                 <div id="settingsShadersContainer">
-                    <div class="settingsModsHeader">Shaderpacks</div>
-                    <div id="settingsShaderpackDesc">Włącz lub wyłącz shadery. Uwaga, shadery będą działać płynnie tylko na mocnych konfiguracjach. Tutaj możesz dodać niestandardowe.</div>
+                    <div class="settingsModsHeader"><%- lang('settings.shaderpacks') %></div>
+                    <div id="settingsShaderpackDesc"><%- lang('settings.shaderpackDesc') %></div>
                     <div id="settingsShaderpackWrapper">
                         <button id="settingsShaderpackButton"> + </button>
                         <div class="settingsSelectContainer">
-                            <div class="settingsSelectSelected" id="settingsShadersSelected">Wybierz Shaderpack</div>
+                            <div class="settingsSelectSelected" id="settingsShadersSelected"><%- lang('settings.selectShaderpack') %></div>
                             <div class="settingsSelectOptions" id="settingsShadersOptions" hidden>
 
                             </div>
@@ -169,8 +169,8 @@
         </div>
         <div id="settingsTabJava" class="settingsTab" style="display: none;">
             <div class="settingsTabHeader">
-                <span class="settingsTabHeaderText">Ustawienia Javy</span>
-                <span class="settingsTabHeaderDesc">Zarządzaj konfiguracją Java (zaawansowane).</span>
+                <span class="settingsTabHeaderText"><%- lang('settings.tabJavaHeaderText') %></span>
+                <span class="settingsTabHeaderDesc"><%- lang('settings.tabJavaHeaderDesc') %></span>
             </div>
             <div class="settingsSelServContainer">
                 <div class="settingsSelServContent">
@@ -178,16 +178,16 @@
                 </div>
                 <div class="settingsSwitchServerContainer">
                     <div class="settingsSwitchServerContent">
-                        <button class="settingsSwitchServerButton">Zmień</button>
+                        <button class="settingsSwitchServerButton"><%- lang('settings.switchServerButton') %></button>
                     </div>
                 </div>
             </div>
             <div id="settingsMemoryContainer">
-                <div id="settingsMemoryTitle">Pamięć</div>
+                <div id="settingsMemoryTitle"><%- lang('settings.memoryTitle') %></div>
                 <div id="settingsMemoryContent">
                     <div id="settingsMemoryContentLeft">
                         <div class="settingsMemoryContentItem">
-                            <span class="settingsMemoryHeader">Maximum RAM</span>
+                            <span class="settingsMemoryHeader"><%- lang('settings.maxRAM') %></span>
                             <div class="settingsMemoryActionContainer">
                                 <div id="settingsMaxRAMRange" class="rangeSlider" cValue="MaxRAM" serverDependent min="3" max="8" value="3" step="0.5">
                                     <div class="rangeSliderBar"></div>
@@ -197,7 +197,7 @@
                             </div>
                         </div>
                         <div class="settingsMemoryContentItem">
-                            <span class="settingsMemoryHeader">Minimum RAM</span>
+                            <span class="settingsMemoryHeader"><%- lang('settings.minRAM') %></span>
                             <div class="settingsMemoryActionContainer">
                                 <div id="settingsMinRAMRange" class="rangeSlider" cValue="MinRAM" serverDependent min="3" max="8" value="3" step="0.5">
                                     <div class="rangeSliderBar"></div>
@@ -206,16 +206,16 @@
                                 <span id="settingsMinRAMLabel" class="settingsMemoryLabel">3G</span>
                             </div>
                         </div>
-                        <div id="settingsMemoryDesc">Zalecane minimum pamięci RAM to 6 gigabajty. Ustawienie wartości minimalnej i maksymalnej na tę samą wartość może zmniejszyć opóźnienie.</div>
+                        <div id="settingsMemoryDesc"><%- lang('settings.memoryDesc') %></div>
                     </div>
                     <div id="settingsMemoryContentRight">
                         <div id="settingsMemoryStatus">
                             <div class="settingsMemoryStatusContainer">
-                                <span class="settingsMemoryStatusTitle">Razem</span>
+                                <span class="settingsMemoryStatusTitle"><%- lang('settings.memoryTotalTitle') %></span>
                                 <span id="settingsMemoryTotal" class="settingsMemoryStatusValue">16G</span>
                             </div>
                             <div class="settingsMemoryStatusContainer">
-                                <span class="settingsMemoryStatusTitle">Dostępne</span>
+                                <span class="settingsMemoryStatusTitle"><%- lang('settings.memoryAvailableTitle') %></span>
                                 <span id="settingsMemoryAvail" class="settingsMemoryStatusValue">7.3G</span>
                             </div>
                         </div>
@@ -223,9 +223,9 @@
                 </div>
             </div>
             <div class="settingsFileSelContainer">
-                <div class="settingsFileSelTitle">Java Executable</div>
+                <div class="settingsFileSelTitle"><%- lang('settings.javaExecutableTitle') %></div>
                 <div class="settingsFileSelContent">
-                    <div id="settingsJavaExecDetails">Selected: Java 8 Update 172 (x64)</div>
+                    <div id="settingsJavaExecDetails"><!-- Invalid Selection --></div>
                     <div class="settingsFileSelActions">
                         <div class="settingsFileSelIcon">
                             <svg class="settingsFileSelSVG" x="0px" y="0px" viewBox="0 0 305.001 305.001">
@@ -242,13 +242,13 @@
                             </svg>
                         </div>
                         <input class="settingsFileSelVal" id="settingsJavaExecVal" type="text" value="null" cValue="JavaExecutable" serverDependent disabled>
-                        <button class="settingsFileSelButton" id="settingsJavaExecSel" dialogTitle="Select Java Executable" dialogDirectory="false">Choose File</button>
+                        <button class="settingsFileSelButton" id="settingsJavaExecSel" dialogTitle="<%- lang('settings.javaExecSelDialogTitle') %>" dialogDirectory="false"><%- lang('settings.javaExecSelButtonText') %></button>
                     </div>
                 </div>
-                <div class="settingsFileSelDesc">Java executable jest sprawdzany przed uruchomieniem gry. <strong id="settingsJavaReqDesc">Requires Java 8 x64.</strong><br>Ścieżka powinna kończyć się na <strong>bin<%= process.platform === 'win32' ? '\\javaw.exe' : '/java' %></strong>.</div>
+                <div class="settingsFileSelDesc"><%- lang('settings.javaExecDesc') %> <strong id="settingsJavaReqDesc"><!-- Requires Java 8 x64. --></strong><br><%- lang('settings.javaPathDesc', {'pathSuffix': `bin${process.platform === 'win32' ? '\\javaw.exe' : '/java'}`}) %></div>
             </div>
             <div id="settingsJVMOptsContainer">
-                <div id="settingsJVMOptsTitle">Dodatkowe opcje JVM</div>
+                <div id="settingsJVMOptsTitle"><%- lang('settings.jvmOptsTitle') %></div>
                 <div id="settingsJVMOptsContent">
                     <div class="settingsFileSelIcon">
                         <svg class="settingsFileSelSVG" x="0px" y="0px" viewBox="0 0 305.001 305.001">
@@ -266,19 +266,18 @@
                     </div>
                     <input id="settingsJVMOptsVal" cValue="JVMOptions" serverDependent type="text">
                 </div>
-                <div id="settingsJVMOptsDesc">Opcje, które mają być przekazane do JVM podczas uruchamiania. <em>-Xms</em> i <em>-Xmx</em> nie powinny być ujęte.<br><a href="https://docs.oracle.com/javase/8/docs/technotes/tools/<%= process.platform === 'win32' ? 'windows' : 'unix' %>/java.html"
-                        id="settingsJvmOptsLink">Available Options for Java 8</a>.</div>
+                <div id="settingsJVMOptsDesc"><%- lang('settings.jvmOptsDesc') %><br><a href="#" id="settingsJvmOptsLink"><!-- Available Options --></a></div>
             </div>
         </div>
         <div id="settingsTabLauncher" class="settingsTab" style="display: none;">
             <div class="settingsTabHeader">
-                <span class="settingsTabHeaderText">Ustawienia Launchera</span>
-                <span class="settingsTabHeaderDesc">Opcje związane z samym launcherem.</span>
+                <span class="settingsTabHeaderText"><%- lang('settings.launcherTabHeaderText') %></span>
+                <span class="settingsTabHeaderDesc"><%- lang('settings.launcherTabHeaderDesc') %></span>
             </div>
             <div class="settingsFieldContainer">
                 <div class="settingsFieldLeft">
-                    <span class="settingsFieldTitle">Zezwól na aktualizacje eksperymentalne.</span>
-                    <span class="settingsFieldDesc">Wersja deweloperska zawiera nowe funkcje, które mogą nie być w pełni przetestowane lub zintegrowane.<br>Ta opcja będzie zawsze zaznaczona, jeśli używasz już wersji deweloperskiej.</span>
+                    <span class="settingsFieldTitle"><%- lang('settings.allowPrereleaseTitle') %></span>
+                    <span class="settingsFieldDesc"><%- lang('settings.allowPrereleaseDesc') %></span>
                 </div>
                 <div class="settingsFieldRight">
                     <label class="toggleSwitch">
@@ -289,7 +288,7 @@
             </div>
             <div class="settingsFileSelContainer">
                 <div class="settingsFileSelContent">
-                    <div class="settingsFieldTitle" id="settingsDataDirTitle">Folder z danymi</div>
+                    <div class="settingsFieldTitle" id="settingsDataDirTitle"><%- lang('settings.dataDirectoryTitle') %></div>
                     <div class="settingsFileSelActions">
                         <div class="settingsFileSelIcon">
                             <svg class="settingsFileSelSVG">
@@ -301,90 +300,90 @@
                             </svg>
                         </div>
                         <input class="settingsFileSelVal" type="text" value="null" cValue="DataDirectory" disabled>
-                        <button class="settingsFileSelButton" dialogTitle="Select Data Directory" dialogDirectory="true">Wybierz folder</button>
+                        <button class="settingsFileSelButton" dialogTitle="<%- lang('settings.selectDataDirectory') %>" dialogDirectory="true"><%- lang('settings.chooseFolder') %></button>
                     </div>
                 </div>
-                <div class="settingsFileSelDesc">Wszystkie pliki gry i lokalne instalacje Java będą przechowywane w tym katalogu.<br>Zrzuty ekranu i zapisy świata są przechowywane w folderze instancji dla odpowiedniej konfiguracji serwera.</div>
+                <div class="settingsFileSelDesc"><%- lang('settings.dataDirectoryDesc') %></div>
             </div>
         </div>
         <div id="settingsTabAbout" class="settingsTab" style="display: none;">
             <div class="settingsTabHeader">
-                <span class="settingsTabHeaderText">O launcherze</span>
-                <span class="settingsTabHeaderDesc">Wyświetl informacje i uwagi dotyczące wydania dla bieżącej wersji.</span>
+                <span class="settingsTabHeaderText"><%- lang('settings.aboutTabHeaderText') %></span>
+                <span class="settingsTabHeaderDesc"><%- lang('settings.aboutTabHeaderDesc') %></span>
             </div>
             <div id="settingsAboutCurrentContainer">
                 <div id="settingsAboutCurrentContent">
                     <div id="settingsAboutCurrentHeadline">
                         <img id="settingsAboutLogo" src="./assets/images/SealCircle.png">
-                        <span id="settingsAboutTitle">TostHost na modach Launcher</span>
+                        <span id="settingsAboutTitle"><%- lang('settings.aboutTitle', { appName: lang('app.title') }) %></span>
                     </div>
                     <div id="settingsAboutCurrentVersion">
                         <div id="settingsAboutCurrentVersionCheck">&#10003;</div>
                         <div id="settingsAboutCurrentVersionDetails">
-                            <span id="settingsAboutCurrentVersionTitle">Stabilna wersja</span>
+                            <span id="settingsAboutCurrentVersionTitle"><%- lang('settings.stableRelease') %></span>
                             <div id="settingsAboutCurrentVersionLine">
-                                <span id="settingsAboutCurrentVersionText">Wersja </span>
-                                <span id="settingsAboutCurrentVersionValue">0.0.1-alpha.12</span>
+                                <span id="settingsAboutCurrentVersionText"><%- lang('settings.versionText') %></span>
+                                <span id="settingsAboutCurrentVersionValue">0.0.1-alpha.18</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div id="settingsAboutButtons">
-                    <a href="https://github.com/dscalZi/HeliosLauncher" id="settingsAboutSourceButton" class="settingsAboutButton">Source (GitHub)</a>
+                    <a href="<%- lang('settings.sourceGithubLink') %>" id="settingsAboutSourceButton" class="settingsAboutButton"><%- lang('settings.sourceGithub') %></a>
                     <!-- The following must be included in third-party usage. -->
                     <!-- <a href="https://github.com/dscalzi/HeliosLauncher" id="settingsAboutSourceButton" class="settingsAboutButton">Original Source</a> -->
-                    <a href="https://github.com/dscalZi/HeliosLauncher/issues" id="settingsAboutSupportButton" class="settingsAboutButton">Support</a>
-                    <a href="#" id="settingsAboutDevToolsButton" class="settingsAboutButton">DevTools Console</a>
+                    <a href="<%- lang('settings.supportLink') %>" id="settingsAboutSupportButton" class="settingsAboutButton"><%- lang('settings.support') %></a>
+                    <a href="#" id="settingsAboutDevToolsButton" class="settingsAboutButton"><%- lang('settings.devToolsConsole') %></a>
                 </div>
             </div>
             <div class="settingsChangelogContainer">
                 <div class="settingsChangelogContent">
                     <div class="settingsChangelogHeadline">
-                        <div class="settingsChangelogLabel">Informacje o wydaniu</div>
-                        <div class="settingsChangelogTitle">Changelog</div>
+                        <div class="settingsChangelogLabel"><%- lang('settings.releaseNotes') %></div>
+                        <div class="settingsChangelogTitle"><%- lang('settings.changelog') %></div>
                     </div>
                     <div class="settingsChangelogText">
-                        Brak informacji o wersji
+                        <%- lang('settings.noReleaseNotes') %>
                     </div>
                 </div>
                 <div class="settingsChangelogActions">
-                    <a class="settingsChangelogButton settingsAboutButton" href="#">Zobacz informacje o wersji na GitHubie</a>
+                    <a class="settingsChangelogButton settingsAboutButton" href="#"><%- lang('settings.viewReleaseNotes') %></a>
                 </div>
             </div>
         </div>
         <div id="settingsTabUpdate" class="settingsTab" style="display: none;">
             <div class="settingsTabHeader">
-                <span class="settingsTabHeaderText">Aktualizacje Launchera</span>
-                <span class="settingsTabHeaderDesc">Pobieranie, instalowanie i przeglądanie aktualizacji dla launchera.</span>
+                <span class="settingsTabHeaderText"><%- lang('settings.launcherUpdatesHeaderText') %></span>
+                <span class="settingsTabHeaderDesc"><%- lang('settings.launcherUpdatesHeaderDesc') %></span>
             </div>
             <div id="settingsUpdateStatusContainer">
                 <div id="settingsUpdateStatusContent">
                     <div id="settingsUpdateStatusHeadline">
-                        <span id="settingsUpdateTitle">Używasz najnowszej wersji</span>
+                        <span id="settingsUpdateTitle"><!-- You Are Running the Latest Version --></span>
                     </div>
                     <div id="settingsUpdateVersion">
                         <div id="settingsUpdateVersionCheck">&#10003;</div>
                         <div id="settingsUpdateVersionDetails">
-                            <span id="settingsUpdateVersionTitle">Stabilna wersja</span>
+                            <span id="settingsUpdateVersionTitle"><%- lang('settings.stableRelease') %></span>
                             <div id="settingsUpdateVersionLine">
-                                <span id="settingsUpdateVersionText">Wersja </span>
+                                <span id="settingsUpdateVersionText"><%- lang('settings.versionText') %> </span>
                                 <span id="settingsUpdateVersionValue">0.0.1-alpha.18</span>
                             </div>
                         </div>
                     </div>
                     <div id="settingsUpdateActionContainer">
-                        <button id="settingsUpdateActionButton">Sprawdź aktualizacje</button>
+                        <button id="settingsUpdateActionButton"><%- lang('settings.checkForUpdates') %></button>
                     </div>
                 </div>
             </div>
             <div class="settingsChangelogContainer">
                 <div class="settingsChangelogContent">
                     <div class="settingsChangelogHeadline">
-                        <div class="settingsChangelogLabel">Co nowego</div>
-                        <div class="settingsChangelogTitle">Update Release Notes</div>
+                        <div class="settingsChangelogLabel"><%- lang('settings.whatsNew') %></div>
+                        <div class="settingsChangelogTitle"><%- lang('settings.updateReleaseNotes') %></div>
                     </div>
                     <div class="settingsChangelogText">
-                        Brak informacji o wersji
+                        <%- lang('settings.noReleaseNotes') %>
                     </div>
                 </div>
             </div>

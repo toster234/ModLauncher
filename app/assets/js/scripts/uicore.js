@@ -5,11 +5,12 @@
  * modules, excluding dependencies.
  */
 // Requirements
-const $ = require('jquery')
-const { ipcRenderer, shell, webFrame } = require('electron')
-const remote = require('@electron/remote')
-const isDev = require('./assets/js/isdev')
-const { LoggerUtil } = require('helios-core')
+const $                              = require('jquery')
+const {ipcRenderer, shell, webFrame} = require('electron')
+const remote                         = require('@electron/remote')
+const isDev                          = require('./assets/js/isdev')
+const { LoggerUtil }                 = require('helios-core')
+const Lang                           = require('./assets/js/langloader')
 
 const loggerUICore = LoggerUtil.getLogger('UICore')
 const loggerAutoUpdater = LoggerUtil.getLogger('AutoUpdater')
@@ -41,8 +42,8 @@ if (!isDev) {
     ipcRenderer.on('autoUpdateNotification', (event, arg, info) => {
         switch (arg) {
             case 'checking-for-update':
-                loggerAutoUpdater.info('Sprawdzenie aktualizacji..')
-                settingsUpdateButtonStatus('Sprawdzanie aktualizacji..', true)
+                loggerAutoUpdater.info('Checking for update..')
+                settingsUpdateButtonStatus(Lang.queryJS('uicore.autoUpdate.checkingForUpdateButton'), true)
                 break
             case 'update-available':
                 loggerAutoUpdater.info('Dostępna nowa aktualizacja', info.version)
@@ -55,9 +56,9 @@ if (!isDev) {
                 populateSettingsUpdateInformation(info)
                 break
             case 'update-downloaded':
-                loggerAutoUpdater.info('Aktualizacja ' + info.version + ' jest gotowa do zainstalowania.')
-                settingsUpdateButtonStatus('Zainstaluj teraz', false, () => {
-                    if (!isDev) {
+                loggerAutoUpdater.info('Update ' + info.version + ' ready to be installed.')
+                settingsUpdateButtonStatus(Lang.queryJS('uicore.autoUpdate.installNowButton'), false, () => {
+                    if(!isDev){
                         ipcRenderer.send('autoUpdateAction', 'installUpdateNow')
                     }
                 })
@@ -65,7 +66,7 @@ if (!isDev) {
                 break
             case 'update-not-available':
                 loggerAutoUpdater.info('No new update found.')
-                settingsUpdateButtonStatus('Sprawdź aktualizacje')
+                settingsUpdateButtonStatus(Lang.queryJS('uicore.autoUpdate.checkForUpdatesButton'))
                 break
             case 'ready':
                 updateCheckListener = setInterval(() => {
